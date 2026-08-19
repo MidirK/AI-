@@ -20,3 +20,17 @@ export function login({ email, password }) {
     body: JSON.stringify({ email, password }),
   });
 }
+
+export function verifyEmail(token) {
+  return apiFetch("/auth/verify-email", {
+    method: "POST",
+    body: JSON.stringify({ token }),
+  });
+}
+
+export function resendVerification(email) {
+  return apiFetch("/auth/resend-verification", {
+    method: "POST",
+    body: JSON.stringify({ email }),
+  });
+}

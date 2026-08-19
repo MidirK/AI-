@@ -63,6 +63,18 @@ def make_user(client):
         )
         assert signup_res.status_code == 201, signup_res.text
 
+        # 이메일 인증 전에는 로그인이 막히므로, 테스트에서는 실제 메일함을 확인하는 대신
+        # DB에서 바로 인증 완료 처리한다.
+        db = TestingSessionLocal()
+        try:
+            from app.models.user import User
+
+            db_user = db.get(User, signup_res.json()["id"])
+            db_user.is_verified = True
+            db.commit()
+        finally:
+            db.close()
+
         login_res = client.post("/api/auth/login", json={"email": email, "password": password})
         assert login_res.status_code == 200, login_res.text
         token = login_res.json()["access_token"]

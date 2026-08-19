@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { resendVerification } from "../api/auth";
 
 export default function LoginPage() {
   const { login } = useAuth();
@@ -12,11 +13,15 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [needsVerification, setNeedsVerification] = useState(false);
+  const [resendMessage, setResendMessage] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
     setError("");
+    setNeedsVerification(false);
+    setResendMessage("");
     setSubmitting(true);
 
     try {
@@ -25,8 +30,21 @@ export default function LoginPage() {
       navigate(redirectTo, { replace: true });
     } catch (err) {
       setError(err.message);
+      if (err.code === "EMAIL_NOT_VERIFIED") {
+        setNeedsVerification(true);
+      }
     } finally {
       setSubmitting(false);
+    }
+  }
+
+  async function handleResend() {
+    setResendMessage("");
+    try {
+      const res = await resendVerification(email);
+      setResendMessage(res.message);
+    } catch (err) {
+      setResendMessage(err.message);
     }
   }
 
@@ -49,6 +67,15 @@ export default function LoginPage() {
         </label>
 
         {error && <p className="status-text error">{error}</p>}
+
+        {needsVerification && (
+          <div className="form-actions">
+            <button type="button" className="btn btn-ghost" onClick={handleResend}>
+              인증 메일 다시 보내기
+            </button>
+          </div>
+        )}
+        {resendMessage && <p className="status-text">{resendMessage}</p>}
 
         <div className="form-actions">
           <button type="submit" className="btn btn-primary" disabled={submitting}>

@@ -11,10 +11,10 @@ passlib[bcrypt]==1.7.4
 bcrypt==4.0.1  # passlib 1.7.4는 bcrypt>=4.1과 호환되지 않음 (backend 감지 오류)
 python-multipart==0.0.20
 python-dotenv==1.0.1
+httpx==0.28.1  # Resend API 호출(app/services/email.py)에도 사용
 
 # --- 테스트 ---
 pytest==9.1.1
-httpx==0.28.1
 
 # --- 보안 (rate limit) ---
 slowapi==0.1.10
