@@ -1,0 +1,43 @@
+erDiagram
+    USERS ||--o{ POSTS : 작성
+    USERS ||--o{ COMMENTS : 작성
+    POSTS ||--o{ COMMENTS : 포함
+    POSTS ||--o| STUDY_DETAILS : 확장
+    POSTS ||--o| JOB_DETAILS : 확장
+
+    USERS {
+        int id PK
+        varchar email UK
+        varchar password
+        varchar nickname UK
+        varchar student_id
+        enum user_type
+        enum role
+        enum status
+        varchar verification_doc_path
+    }
+    POSTS {
+        int id PK
+        int user_id FK
+        enum category
+        varchar title
+        text content
+        int view_count
+    }
+    COMMENTS {
+        int id PK
+        int post_id FK
+        int user_id FK
+        varchar content
+    }
+    STUDY_DETAILS {
+        int post_id PK
+        int recruit_count
+        int current_count
+        enum status
+    }
+    JOB_DETAILS {
+        int post_id PK
+        varchar company
+        date deadline
+    }

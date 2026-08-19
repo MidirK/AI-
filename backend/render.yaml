@@ -1,0 +1,26 @@
+# Render(https://render.com) 배포용 설정.
+# Render 대시보드에서 "New +" → "Blueprint" → 이 저장소 선택 시 자동으로 읽는다.
+# DATABASE_URL, SECRET_KEY, CORS_ORIGINS, ALLOWED_EMAIL_DOMAINS는
+# Render 대시보드의 Environment 탭에서 직접 채워야 한다 (여기엔 값을 적지 않음).
+
+services:
+  - type: web
+    name: aicom-backend
+    runtime: python
+    rootDir: backend
+    plan: free
+    buildCommand: pip install -r requirements.txt && alembic upgrade head
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: SECRET_KEY
+        sync: false
+      - key: ALGORITHM
+        value: HS256
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: "60"
+      - key: CORS_ORIGINS
+        sync: false
+      - key: ALLOWED_EMAIL_DOMAINS
+        sync: false
