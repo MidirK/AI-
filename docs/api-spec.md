@@ -68,6 +68,7 @@ FastAPI의 기본 예외 처리 형식을 그대로 사용합니다.
 | study | 스터디/프로젝트 모집 | 로그인한 회원 |
 | job | 취업정보 | 로그인한 회원 |
 | senior | 선후배 커뮤니티 | 로그인한 회원 |
+| transfer | 전과·편입생 정보 | 로그인한 회원 |
 
 ---
 
@@ -83,7 +84,7 @@ FastAPI의 기본 예외 처리 형식을 그대로 사용합니다.
 {
   "email": "student@university.ac.kr",
   "password": "password123!",
-  "nickname": "홍길동",
+  "name": "홍길동",
   "student_id": "20231234"
 }
 ```
@@ -94,7 +95,7 @@ FastAPI의 기본 예외 처리 형식을 그대로 사용합니다.
 {
   "id": 1,
   "email": "student@university.ac.kr",
-  "nickname": "홍길동"
+  "name": "홍길동"
 }
 ```
 
@@ -143,7 +144,7 @@ FastAPI의 기본 예외 처리 형식을 그대로 사용합니다.
       "id": 15,
       "category": "study",
       "title": "게시글 제목",
-      "nickname": "홍길동",
+      "name": "홍길동",
       "view_count": 3,
       "created_at": "2026-08-01T10:00:00"
     }
@@ -163,7 +164,7 @@ FastAPI의 기본 예외 처리 형식을 그대로 사용합니다.
   "category": "study",
   "title": "게시글 제목",
   "content": "본문 내용",
-  "nickname": "홍길동",
+  "name": "홍길동",
   "view_count": 4,
   "created_at": "2026-08-01T10:00:00",
   "updated_at": "2026-08-01T10:00:00",
@@ -223,7 +224,7 @@ FastAPI의 기본 예외 처리 형식을 그대로 사용합니다.
   {
     "id": 7,
     "content": "댓글 내용",
-    "nickname": "김철수",
+    "name": "김철수",
     "created_at": "2026-08-01T11:00:00",
     "is_mine": false
   }
@@ -261,7 +262,7 @@ FastAPI의 기본 예외 처리 형식을 그대로 사용합니다.
 {
   "id": 1,
   "email": "student@university.ac.kr",
-  "nickname": "홍길동",
+  "name": "홍길동",
   "student_id": "20231234",
   "role": "student"
 }
@@ -270,7 +271,7 @@ FastAPI의 기본 예외 처리 형식을 그대로 사용합니다.
 ### `PUT /users/me` — 내 정보 수정
 
 인증: 필요
-요청 body: `nickname` 등 수정 가능한 필드만
+요청 body: `name` 등 수정 가능한 필드만
 
 ### `GET /users/me/posts` — 내가 쓴 글 목록
 

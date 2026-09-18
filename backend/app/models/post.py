@@ -12,7 +12,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.db.base import Base
 
 # 게시판 카테고리 값 (docs/api-spec.md 0-5 참고)
-POST_CATEGORIES = ("notice", "free", "study", "job", "senior")
+POST_CATEGORIES = ("notice", "free", "study", "job", "senior", "transfer")
 
 
 class Post(Base):

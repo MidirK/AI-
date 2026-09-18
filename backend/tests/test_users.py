@@ -16,12 +16,12 @@ def test_get_me_requires_auth(client):
     assert res.status_code == 401
 
 
-def test_update_nickname(client, make_user):
+def test_update_name(client, make_user):
     _, headers = make_user()
 
-    res = client.put("/api/users/me", json={"nickname": "새닉네임"}, headers=headers)
+    res = client.put("/api/users/me", json={"name": "새이름"}, headers=headers)
     assert res.status_code == 200
-    assert res.json()["nickname"] == "새닉네임"
+    assert res.json()["name"] == "새이름"
 
 
 def test_my_posts_and_comments(client, make_user):

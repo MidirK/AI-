@@ -14,6 +14,6 @@ class CommentOut(BaseModel):
 
     id: int
     content: str
-    nickname: str
+    name: str
     created_at: datetime
     is_mine: bool

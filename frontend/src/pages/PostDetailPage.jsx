@@ -96,7 +96,7 @@ export default function PostDetailPage() {
       <div className="post-detail-header">
         <h1>{post.title}</h1>
         <div className="post-meta">
-          <span>{post.nickname}</span>
+          <span>{post.name}</span>
           <span>{new Date(post.created_at).toLocaleString("ko-KR")}</span>
           <span>조회 {post.view_count}</span>
         </div>
@@ -144,7 +144,7 @@ export default function PostDetailPage() {
           {comments.map((comment) => (
             <li key={comment.id} className="comment-item">
               <div className="comment-body">
-                <span className="comment-author">{comment.nickname}</span>
+                <span className="comment-author">{comment.name}</span>
                 <p>{comment.content}</p>
                 <span className="comment-date">{new Date(comment.created_at).toLocaleString("ko-KR")}</span>
               </div>

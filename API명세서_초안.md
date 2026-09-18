@@ -83,7 +83,7 @@ Content-Type: `multipart/form-data` (증명서 파일을 함께 받기 때문에
 |---|---|---|
 | `email` | string | |
 | `password` | string | 최소 6자 이상 + 영문자 1개 이상 + 특수문자 1개 이상 |
-| `nickname` | string | |
+| `name` | string | |
 | `student_id` | string | 학번 |
 | `user_type` | string | `신입생` / `재학생` / `졸업생` 중 하나 |
 | `verification_doc` | file | 신입생: 입학·합격증명서 / 재학생: 재학증명서 / 졸업생: 졸업증명서 |
@@ -93,7 +93,7 @@ Content-Type: `multipart/form-data` (증명서 파일을 함께 받기 때문에
 {
   "id": 1,
   "email": "student@university.ac.kr",
-  "nickname": "홍길동",
+  "name": "홍길동",
   "status": "pending"
 }
 ```
@@ -149,7 +149,7 @@ Content-Type: `multipart/form-data` (증명서 파일을 함께 받기 때문에
     {
       "id": 15,
       "title": "게시글 제목",
-      "nickname": "홍길동",
+      "name": "홍길동",
       "view_count": 3,
       "created_at": "2026-08-01T10:00:00"
     }
@@ -167,7 +167,7 @@ Content-Type: `multipart/form-data` (증명서 파일을 함께 받기 때문에
   "category": "study",
   "title": "게시글 제목",
   "content": "본문 내용",
-  "nickname": "홍길동",
+  "name": "홍길동",
   "view_count": 4,
   "created_at": "2026-08-01T10:00:00",
   "updated_at": "2026-08-01T10:00:00",
@@ -214,7 +214,7 @@ Content-Type: `multipart/form-data` (증명서 파일을 함께 받기 때문에
   {
     "id": 7,
     "content": "댓글 내용",
-    "nickname": "김철수",
+    "name": "김철수",
     "created_at": "2026-08-01T11:00:00",
     "is_mine": false
   }
@@ -246,7 +246,7 @@ Content-Type: `multipart/form-data` (증명서 파일을 함께 받기 때문에
 {
   "id": 1,
   "email": "student@university.ac.kr",
-  "nickname": "홍길동",
+  "name": "홍길동",
   "student_id": "20231234",
   "user_type": "재학생",
   "role": "student",
@@ -256,7 +256,7 @@ Content-Type: `multipart/form-data` (증명서 파일을 함께 받기 때문에
 
 ### PUT `/users/me` — 내 정보 수정
 인증: 필요
-요청 body: `nickname` 등 수정 가능한 필드만
+요청 body: `name` 등 수정 가능한 필드만
 
 ### DELETE `/users/me` — 회원 탈퇴 (v2 신규)
 인증: 필요
@@ -303,7 +303,7 @@ Content-Type: `multipart/form-data` (증명서 파일을 함께 받기 때문에
     {
       "id": 10,
       "email": "new@university.ac.kr",
-      "nickname": "김신입",
+      "name": "김신입",
       "student_id": "20261234",
       "user_type": "신입생",
       "verification_doc_url": "/uploads/verification/10_admission.pdf",

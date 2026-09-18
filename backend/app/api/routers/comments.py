@@ -30,7 +30,7 @@ def list_comments(
         CommentOut(
             id=c.id,
             content=c.content,
-            nickname=c.author.nickname,
+            name=c.author.name,
             created_at=c.created_at,
             is_mine=bool(current_user and current_user.id == c.author_id),
         )
@@ -59,7 +59,7 @@ def create_comment(
     return CommentOut(
         id=comment.id,
         content=comment.content,
-        nickname=current_user.nickname,
+        name=current_user.name,
         created_at=comment.created_at,
         is_mine=True,
     )

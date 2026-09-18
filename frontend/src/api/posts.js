@@ -9,6 +9,7 @@ export const POST_CATEGORIES = [
   { value: "study", label: "스터디/프로젝트 모집" },
   { value: "job", label: "취업정보" },
   { value: "senior", label: "선후배 커뮤니티" },
+  { value: "transfer", label: "전과·편입생 정보" },
 ];
 
 export function fetchPosts({ category, page = 1, size = 10 }) {

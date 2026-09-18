@@ -20,7 +20,7 @@ def test_signup_rejects_non_school_email(client, restrict_email_domain):
         json={
             "email": "someone@gmail.com",
             "password": "testpass123",
-            "nickname": "닉네임",
+            "name": "이름",
             "student_id": "20231234",
         },
     )
@@ -33,7 +33,7 @@ def test_signup_accepts_school_email(client, restrict_email_domain):
         json={
             "email": "student@ai.university.ac.kr",
             "password": "testpass123",
-            "nickname": "닉네임",
+            "name": "이름",
             "student_id": "20231234",
         },
     )
@@ -46,7 +46,7 @@ def test_signup_allows_any_domain_when_unrestricted(client):
         json={
             "email": "someone@gmail.com",
             "password": "testpass123",
-            "nickname": "닉네임",
+            "name": "이름",
             "student_id": "20231234",
         },
     )

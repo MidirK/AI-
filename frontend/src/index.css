@@ -1,15 +1,26 @@
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
+  --text: #5b6675;
+  --text-h: #0f1f38;
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --border: #dbe3ee;
+  --code-bg: #eef2f7;
+  --navy: #14264a;
+  --accent: #2673d1;
+  --accent-strong: #1a5aa8;
+  --accent-bg: rgba(38, 115, 209, 0.1);
+  --accent-border: rgba(38, 115, 209, 0.45);
+  --hero-bg: #eaf2fb;
   --social-bg: rgba(244, 243, 236, 0.5);
+  --shadow-sm: 0 1px 2px rgba(15, 31, 56, 0.06);
   --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+    rgba(15, 31, 56, 0.08) 0 10px 15px -3px, rgba(15, 31, 56, 0.05) 0 4px 6px -2px;
+  --shadow-lg:
+    rgba(15, 31, 56, 0.14) 0 20px 35px -10px, rgba(15, 31, 56, 0.08) 0 8px 12px -4px;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
 
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
@@ -32,17 +43,24 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
+    --text: #9fb0c6;
+    --text-h: #eef3fb;
+    --bg: #0f1620;
+    --surface: #16202e;
+    --border: #263650;
+    --code-bg: #1b2531;
+    --navy: #0b1730;
+    --accent: #5b9df0;
+    --accent-strong: #86b8f5;
+    --accent-bg: rgba(91, 157, 240, 0.16);
+    --accent-border: rgba(91, 157, 240, 0.5);
+    --hero-bg: #12203a;
     --social-bg: rgba(47, 48, 58, 0.5);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
     --shadow:
       rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+    --shadow-lg:
+      rgba(0, 0, 0, 0.5) 0 20px 35px -10px, rgba(0, 0, 0, 0.3) 0 8px 12px -4px;
   }
 
   #social .button-icon {
@@ -65,8 +83,14 @@ body {
   box-sizing: border-box;
 }
 
+::selection {
+  background: var(--accent-bg);
+  color: var(--accent);
+}
+
 h1,
-h2 {
+h2,
+h3 {
   font-family: var(--heading);
   font-weight: 500;
   color: var(--text-h);
@@ -92,6 +116,10 @@ h2 {
 }
 p {
   margin: 0;
+}
+
+a {
+  color: var(--accent);
 }
 
 code,
