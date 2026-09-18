@@ -63,7 +63,7 @@ export default function Header() {
           {user ? (
             <>
               <Link to="/mypage" className="nav-link" onClick={closeNav}>
-                {user.nickname}님
+                {user.name}님
               </Link>
               <button type="button" className="btn btn-ghost" onClick={handleLogout}>
                 로그아웃

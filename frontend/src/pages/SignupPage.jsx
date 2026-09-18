@@ -9,7 +9,7 @@ export default function SignupPage() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [nickname, setNickname] = useState("");
+  const [name, setName] = useState("");
   const [studentId, setStudentId] = useState("");
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -22,7 +22,7 @@ export default function SignupPage() {
     setSubmitting(true);
 
     try {
-      await signup({ email, password, nickname, studentId });
+      await signup({ email, password, name, studentId });
       setSignedUpEmail(email);
     } catch (err) {
       setError(err.message);
@@ -77,8 +77,13 @@ export default function SignupPage() {
           />
         </label>
         <label>
-          닉네임
-          <input value={nickname} onChange={(e) => setNickname(e.target.value)} required />
+          이름
+          <input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="실명을 입력해주세요"
+            required
+          />
         </label>
         <label>
           학번

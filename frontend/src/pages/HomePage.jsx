@@ -9,6 +9,7 @@ const CATEGORY_ICONS = {
   study: "👥",
   job: "💼",
   senior: "🎓",
+  transfer: "🔄",
 };
 
 const FEATURES = [

@@ -7,7 +7,7 @@ from app.models.user import User
 def _signup(client, email="verify@example.com", password="testpass123"):
     res = client.post(
         "/api/auth/signup",
-        json={"email": email, "password": password, "nickname": "인증테스트", "student_id": "1"},
+        json={"email": email, "password": password, "name": "인증테스트", "student_id": "1"},
     )
     assert res.status_code == 201, res.text
     return res.json()

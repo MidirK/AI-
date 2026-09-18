@@ -2,13 +2,13 @@
 
 import { apiFetch } from "./client";
 
-export function signup({ email, password, nickname, studentId }) {
+export function signup({ email, password, name, studentId }) {
   return apiFetch("/auth/signup", {
     method: "POST",
     body: JSON.stringify({
       email,
       password,
-      nickname,
+      name,
       student_id: studentId,
     }),
   });

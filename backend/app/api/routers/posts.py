@@ -19,7 +19,7 @@ def _to_detail(post: Post, current_user: User | None) -> PostDetail:
         category=post.category,
         title=post.title,
         content=post.content,
-        nickname=post.author.nickname,
+        name=post.author.name,
         view_count=post.view_count,
         created_at=post.created_at,
         updated_at=post.updated_at,
@@ -55,7 +55,7 @@ def list_posts(
             id=p.id,
             category=p.category,
             title=p.title,
-            nickname=p.author.nickname,
+            name=p.author.name,
             view_count=p.view_count,
             created_at=p.created_at,
         )
