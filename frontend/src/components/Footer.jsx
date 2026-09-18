@@ -1,6 +1,7 @@
 // 사이트 하단 푸터. 플랫폼 소개와 이용약관/개인정보처리방침 링크를 제공한다.
 
 import { Link } from "react-router-dom";
+import deptLogo from "../assets/dept-logo-white.png";
 
 const year = new Date().getFullYear();
 
@@ -10,7 +11,9 @@ export default function Footer() {
       <div className="site-footer-inner">
         <div className="footer-col">
           <Link to="/" className="footer-brand">
-            <span className="brand-mark">A</span>
+            <span className="brand-mark">
+              <img src={deptLogo} alt="" />
+            </span>
             AICOM
           </Link>
           <p>AI정보공학과 학생들을 위한 통합 플랫폼입니다. 학과 공지, 커뮤니티, 취업 정보와 AI 기반 취업

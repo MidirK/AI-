@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { POST_CATEGORIES } from "../api/posts";
+import deptLogo from "../assets/dept-logo-white.png";
 
 export default function Header() {
   const { user, logout } = useAuth();
@@ -23,7 +24,9 @@ export default function Header() {
     <header className="site-header">
       <div className="site-header-inner">
         <Link to="/" className="brand" onClick={closeNav}>
-          <span className="brand-mark">A</span>
+          <span className="brand-mark">
+            <img src={deptLogo} alt="" />
+          </span>
           AICOM
         </Link>
 
