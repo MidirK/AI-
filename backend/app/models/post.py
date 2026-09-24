@@ -24,7 +24,7 @@ class Post(Base):
     content: Mapped[str] = mapped_column(Text, nullable=False)
     view_count: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
 
-    author_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False)
+    author_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False, index=True)
 
     # study 카테고리 전용 필드
     recruit_count: Mapped[int | None] = mapped_column(Integer, nullable=True)
