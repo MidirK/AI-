@@ -27,8 +27,8 @@ def update_me(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    if payload.nickname is not None:
-        current_user.nickname = payload.nickname
+    if payload.name is not None:
+        current_user.name = payload.name
     db.commit()
     db.refresh(current_user)
     return current_user
@@ -52,7 +52,7 @@ def get_my_posts(
             id=p.id,
             category=p.category,
             title=p.title,
-            nickname=current_user.nickname,
+            name=current_user.name,
             view_count=p.view_count,
             created_at=p.created_at,
         )
@@ -76,7 +76,7 @@ def get_my_comments(
         CommentOut(
             id=c.id,
             content=c.content,
-            nickname=current_user.nickname,
+            name=current_user.name,
             created_at=c.created_at,
             is_mine=True,
         )

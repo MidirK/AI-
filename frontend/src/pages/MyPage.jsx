@@ -8,8 +8,8 @@ import { POST_CATEGORIES } from "../api/posts";
 
 export default function MyPage() {
   const { user, refreshMe } = useAuth();
-  const [nickname, setNickname] = useState(user?.nickname ?? "");
-  const [savingNickname, setSavingNickname] = useState(false);
+  const [name, setName] = useState(user?.name ?? "");
+  const [savingName, setSavingName] = useState(false);
   const [message, setMessage] = useState("");
 
   const [myPosts, setMyPosts] = useState(null);
@@ -20,18 +20,18 @@ export default function MyPage() {
     fetchMyComments().then(setMyComments);
   }, []);
 
-  async function handleNicknameSave(e) {
+  async function handleNameSave(e) {
     e.preventDefault();
-    setSavingNickname(true);
+    setSavingName(true);
     setMessage("");
     try {
-      await updateMe({ nickname });
+      await updateMe({ name });
       await refreshMe();
-      setMessage("닉네임이 변경되었습니다.");
+      setMessage("이름이 변경되었습니다.");
     } catch (err) {
       setMessage(err.message);
     } finally {
-      setSavingNickname(false);
+      setSavingName(false);
     }
   }
 
@@ -44,13 +44,13 @@ export default function MyPage() {
       <div className="mypage-info">
         <p>이메일: {user.email}</p>
         <p>학번: {user.student_id}</p>
-        <form className="inline-form" onSubmit={handleNicknameSave}>
+        <form className="inline-form" onSubmit={handleNameSave}>
           <label>
-            닉네임
-            <input value={nickname} onChange={(e) => setNickname(e.target.value)} required />
+            이름
+            <input value={name} onChange={(e) => setName(e.target.value)} required />
           </label>
-          <button type="submit" className="btn btn-primary" disabled={savingNickname}>
-            {savingNickname ? "저장 중..." : "저장"}
+          <button type="submit" className="btn btn-primary" disabled={savingName}>
+            {savingName ? "저장 중..." : "저장"}
           </button>
         </form>
         {message && <p className="status-text">{message}</p>}

@@ -56,10 +56,10 @@ def client():
 def make_user(client):
     """회원가입 + 로그인까지 마친 뒤 (유저 정보, Authorization 헤더)를 반환하는 헬퍼."""
 
-    def _make_user(email="user@example.com", password="testpass123", nickname="테스트유저", student_id="20231234"):
+    def _make_user(email="user@example.com", password="testpass123", name="테스트유저", student_id="20231234"):
         signup_res = client.post(
             "/api/auth/signup",
-            json={"email": email, "password": password, "nickname": nickname, "student_id": student_id},
+            json={"email": email, "password": password, "name": name, "student_id": student_id},
         )
         assert signup_res.status_code == 201, signup_res.text
 
@@ -88,8 +88,8 @@ def make_user(client):
 def make_admin(make_user):
     """관리자 권한을 가진 유저를 만든다 (role은 API로 바꿀 수 없으므로 DB에서 직접 승격)."""
 
-    def _make_admin(email="admin@example.com", nickname="관리자"):
-        user, headers = make_user(email=email, nickname=nickname)
+    def _make_admin(email="admin@example.com", name="관리자"):
+        user, headers = make_user(email=email, name=name)
 
         db = TestingSessionLocal()
         try:

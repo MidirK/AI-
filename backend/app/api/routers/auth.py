@@ -57,7 +57,7 @@ def signup(request: Request, payload: UserSignup, db: Session = Depends(get_db))
     user = User(
         email=payload.email,
         hashed_password=hash_password(payload.password),
-        nickname=payload.nickname,
+        name=payload.name,
         student_id=payload.student_id,
     )
     db.add(user)

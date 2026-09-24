@@ -1,7 +1,7 @@
 """게시글 라우터 (공지/자유/스터디/취업/선후배 공통)."""
 
 from fastapi import APIRouter, Depends, HTTPException, Query, status
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, joinedload
 
 from app.api.deps import get_current_user, get_current_user_optional
 from app.db.base import get_db
@@ -19,7 +19,7 @@ def _to_detail(post: Post, current_user: User | None) -> PostDetail:
         category=post.category,
         title=post.title,
         content=post.content,
-        nickname=post.author.nickname,
+        name=post.author.name,
         view_count=post.view_count,
         created_at=post.created_at,
         updated_at=post.updated_at,
@@ -46,7 +46,12 @@ def list_posts(
     if category not in POST_CATEGORIES:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="존재하지 않는 카테고리입니다.")
 
-    query = db.query(Post).filter(Post.category == category).order_by(Post.created_at.desc())
+    query = (
+        db.query(Post)
+        .options(joinedload(Post.author))
+        .filter(Post.category == category)
+        .order_by(Post.created_at.desc())
+    )
     total = query.count()
     posts = query.offset((page - 1) * size).limit(size).all()
 
@@ -55,7 +60,7 @@ def list_posts(
             id=p.id,
             category=p.category,
             title=p.title,
-            nickname=p.author.nickname,
+            name=p.author.name,
             view_count=p.view_count,
             created_at=p.created_at,
         )
@@ -70,7 +75,7 @@ def get_post(
     db: Session = Depends(get_db),
     current_user: User | None = Depends(get_current_user_optional),
 ):
-    post = db.get(Post, post_id)
+    post = db.get(Post, post_id, options=[joinedload(Post.author)])
     if not post:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="게시글을 찾을 수 없습니다.")
 

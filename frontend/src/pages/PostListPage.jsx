@@ -86,9 +86,9 @@ export default function PostListPage() {
                   <td className="col-title">
                     <Link to={`/post/${post.id}`}>{post.title}</Link>
                   </td>
-                  <td>{post.nickname}</td>
-                  <td>{post.view_count}</td>
-                  <td>{formatDate(post.created_at)}</td>
+                  <td data-label="작성자">{post.name}</td>
+                  <td data-label="조회수">{post.view_count}</td>
+                  <td data-label="작성일">{formatDate(post.created_at)}</td>
                 </tr>
               ))}
             </tbody>

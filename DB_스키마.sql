@@ -24,7 +24,7 @@ CREATE TABLE users (
     id                     INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     email                  VARCHAR(100) NOT NULL UNIQUE COMMENT '로그인 아이디로 사용',
     password               VARCHAR(255) NOT NULL COMMENT '해시된 비밀번호 (bcrypt 등)',
-    nickname               VARCHAR(50)  NOT NULL UNIQUE,
+    name                  VARCHAR(50)  NOT NULL UNIQUE,
     student_id             VARCHAR(20)  NULL COMMENT '학번',
     user_type              ENUM('신입생', '재학생', '졸업생') NOT NULL,
     role                   ENUM('student', 'admin') NOT NULL DEFAULT 'student',

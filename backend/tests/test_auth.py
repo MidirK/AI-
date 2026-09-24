@@ -7,14 +7,14 @@ def test_signup_success(client):
         json={
             "email": "new@example.com",
             "password": "testpass123",
-            "nickname": "새유저",
+            "name": "새유저",
             "student_id": "20231111",
         },
     )
     assert res.status_code == 201
     body = res.json()
     assert body["email"] == "new@example.com"
-    assert body["nickname"] == "새유저"
+    assert body["name"] == "새유저"
     assert "password" not in body
     assert "hashed_password" not in body
 
@@ -24,7 +24,7 @@ def test_signup_duplicate_email_returns_400(client, make_user):
 
     res = client.post(
         "/api/auth/signup",
-        json={"email": "dup@example.com", "password": "pw12345", "nickname": "다른닉", "student_id": "1"},
+        json={"email": "dup@example.com", "password": "pw12345", "name": "다른닉", "student_id": "1"},
     )
     assert res.status_code == 400
 
@@ -59,7 +59,7 @@ def test_signup_is_rate_limited(client):
             json={
                 "email": f"rl{i}@example.com",
                 "password": "testpass123",
-                "nickname": f"유저{i}",
+                "name": f"유저{i}",
                 "student_id": str(i),
             },
         )
@@ -67,6 +67,6 @@ def test_signup_is_rate_limited(client):
 
     over_limit_res = client.post(
         "/api/auth/signup",
-        json={"email": "over-limit@example.com", "password": "testpass123", "nickname": "초과", "student_id": "99"},
+        json={"email": "over-limit@example.com", "password": "testpass123", "name": "초과", "student_id": "99"},
     )
     assert over_limit_res.status_code == 429

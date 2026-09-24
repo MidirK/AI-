@@ -24,7 +24,7 @@ class PostListItem(BaseModel):
     id: int
     category: str
     title: str
-    nickname: str
+    name: str
     view_count: int
     created_at: datetime
 
@@ -46,7 +46,7 @@ class PostDetail(BaseModel):
     category: str
     title: str
     content: str
-    nickname: str
+    name: str
     view_count: int
     created_at: datetime
     updated_at: datetime

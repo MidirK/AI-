@@ -14,7 +14,7 @@ class User(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     email: Mapped[str] = mapped_column(String(255), unique=True, index=True, nullable=False)
     hashed_password: Mapped[str] = mapped_column(String(255), nullable=False)
-    nickname: Mapped[str] = mapped_column(String(50), nullable=False)
+    name: Mapped[str] = mapped_column(String(50), nullable=False)
     student_id: Mapped[str] = mapped_column(String(20), nullable=False)
     # student: 일반 학생, admin: 관리자(공지사항 작성 등 권한 보유)
     role: Mapped[str] = mapped_column(String(20), nullable=False, default="student")

@@ -1,7 +1,7 @@
 """댓글 라우터."""
 
 from fastapi import APIRouter, Depends, HTTPException, status
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, joinedload
 
 from app.api.deps import get_current_user, get_current_user_optional
 from app.db.base import get_db
@@ -24,13 +24,17 @@ def list_comments(
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="게시글을 찾을 수 없습니다.")
 
     comments = (
-        db.query(Comment).filter(Comment.post_id == post_id).order_by(Comment.created_at.asc()).all()
+        db.query(Comment)
+        .options(joinedload(Comment.author))
+        .filter(Comment.post_id == post_id)
+        .order_by(Comment.created_at.asc())
+        .all()
     )
     return [
         CommentOut(
             id=c.id,
             content=c.content,
-            nickname=c.author.nickname,
+            name=c.author.name,
             created_at=c.created_at,
             is_mine=bool(current_user and current_user.id == c.author_id),
         )
@@ -59,7 +63,7 @@ def create_comment(
     return CommentOut(
         id=comment.id,
         content=comment.content,
-        nickname=current_user.nickname,
+        name=current_user.name,
         created_at=comment.created_at,
         is_mine=True,
     )
