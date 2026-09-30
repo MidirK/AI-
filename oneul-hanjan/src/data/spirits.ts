@@ -1,0 +1,363 @@
+import type { SpiritCategory } from '../types';
+
+// 술 종류별 소개, 스타일(변형), 음용 방법 데이터.
+// 실제 브랜드/제품 정보가 아닌 일반적으로 알려진 특징을 바탕으로 작성한 예시 데이터입니다.
+
+export const spiritCategories: SpiritCategory[] = [
+  {
+    id: 'whiskey',
+    name: '위스키',
+    englishName: 'Whisky / Whiskey',
+    shortIntro:
+      '곡물을 증류한 뒤 나무통에서 오래 숙성시킨 술이에요. 나무 향과 곡물 향이 진하게 느껴져요.',
+    aromaSummary: '오크통에서 배어나온 바닐라·카라멜 향, 스타일에 따라 훈연 향이 나기도 해요.',
+    tasteSummary: '곡물의 고소함과 오크 숙성에서 오는 은은한 단맛이 기본이에요.',
+    characteristicNote:
+      '위스키는 만든 지역과 재료에 따라 향과 맛이 크게 달라져요. 한 종류만 마셔보고 "위스키는 이런 맛이다"라고 단정 짓기보다는, 여러 스타일을 조금씩 경험해보는 걸 추천해요.',
+    variants: [
+      {
+        id: 'whiskey-scotch',
+        name: '스카치 스타일',
+        flavorTags: ['묵직한 맛'],
+        aroma: '훈연 향, 바다 소금을 닮은 향이 나는 경우가 많아요.',
+        taste: '묵직하고 스모키한 여운이 길게 남아요.',
+        note: '피트(peat)라는 훈연 향이 강하게 나는 스타일도 있어요.',
+      },
+      {
+        id: 'whiskey-bourbon',
+        name: '버번 스타일',
+        flavorTags: ['달콤한 맛'],
+        aroma: '바닐라와 카라멜 같은 달콤한 향이 두드러져요.',
+        taste: '옥수수 원료 특유의 단맛과 부드러운 목넘김이 특징이에요.',
+        note: '새 오크통에서 숙성해 단맛과 나무향이 강하게 남아요.',
+      },
+      {
+        id: 'whiskey-irish',
+        name: '아이리시 스타일',
+        flavorTags: ['산뜻한 맛'],
+        aroma: '꽃향과 과일향이 은은하게 느껴져요.',
+        taste: '부드럽고 산뜻해서 위스키를 처음 접하는 분에게도 편해요.',
+        note: '대부분 세 번 증류해 목넘김이 부드러운 편이에요.',
+      },
+    ],
+    drinkingMethods: [
+      {
+        id: 'whiskey-neat',
+        term: '니트 (Neat)',
+        termExplanation: '얼음이나 물, 다른 재료를 섞지 않고 술만 마시는 방법이에요.',
+        glass: '튤립형 위스키 글라스',
+        useIce: false,
+        steps: [
+          '위스키를 30ml 정도 따르고',
+          '잔을 살짝 기울여 먼저 향을 맡아보고',
+          '한 번에 다 마시지 말고 조금씩 머금어 향을 느껴보세요',
+        ],
+        note: '도수를 그대로 느끼는 방법이라, 처음이라면 소량으로 시작해보는 걸 추천해요.',
+      },
+      {
+        id: 'whiskey-rocks',
+        term: '온더록스 (On the Rocks)',
+        termExplanation: '얼음을 넣어 차갑게, 향은 살짝 눌러서 마시는 방법이에요.',
+        glass: '락 글라스',
+        useIce: true,
+        steps: [
+          '잔에 얼음을 2~3개 채우고',
+          '위스키를 30ml 정도 따른 뒤',
+          '얼음이 살짝 녹을 때까지 잠깐 기다렸다가 마셔보세요',
+        ],
+        note: '얼음이 녹으면서 맛이 점점 부드러워져요.',
+      },
+      {
+        id: 'whiskey-twist',
+        term: '트와이스 업 (물 소량 첨가)',
+        termExplanation: '상온의 물을 몇 방울 더해 잠들어 있던 향을 깨우는 방법이에요.',
+        glass: '튤립형 위스키 글라스',
+        useIce: false,
+        steps: [
+          '위스키 30ml에 상온의 생수를 5~10ml 정도 더하고',
+          '스푼으로 가볍게 한 번만 저어준 뒤',
+          '다시 향을 맡아보면 더 풍성해진 향을 느낄 수 있어요',
+        ],
+        ratioIsExample: true,
+        note: '물의 양은 정해진 답이 없어요. 조금씩 더해가며 본인에게 맞는 비율을 찾아보세요.',
+      },
+      {
+        id: 'whiskey-highball',
+        term: '하이볼 (Highball)',
+        termExplanation: '탄산수를 섞어 가볍고 시원하게 즐기는 방법이에요.',
+        glass: '하이볼 글라스',
+        useIce: true,
+        steps: [
+          '잔에 얼음을 가득 채우고',
+          '위스키 30ml를 따른 뒤',
+          '차가운 탄산수를 120ml 정도 채우고 가볍게 한 번만 저어주세요',
+        ],
+        ratioIsExample: true,
+        note: '위스키와 탄산수 비율은 예시이며, 기호에 따라 얼마든지 조절할 수 있어요.',
+      },
+    ],
+  },
+  {
+    id: 'brandy',
+    name: '브랜디',
+    englishName: 'Brandy',
+    shortIntro:
+      '과일(주로 포도)을 발효한 뒤 증류하고, 다시 오크통에서 숙성한 술이에요. 와인의 풍미가 응축된 느낌이에요.',
+    aromaSummary: '건포도, 말린 자두 같은 농축된 과일 향과 은은한 나무 향이 함께 느껴져요.',
+    tasteSummary: '묵직하면서도 부드러운 단맛이 특징이고, 여운이 길게 남는 편이에요.',
+    characteristicNote:
+      '브랜디는 식사를 마친 뒤 손으로 잔을 감싸 천천히 데워가며 향을 즐기는 술로 잘 알려져 있어요. 도수가 높은 편이니 소량으로 향을 즐기는 걸 추천해요.',
+    variants: [
+      {
+        id: 'brandy-cognac',
+        name: '코냑 스타일',
+        flavorTags: ['묵직한 맛'],
+        aroma: '말린 과일과 나무 향이 짙게 느껴져요.',
+        taste: '묵직하고 여운이 긴 단맛이 특징이에요.',
+        note: '오래 숙성할수록 향이 더 복합적으로 변해요.',
+      },
+      {
+        id: 'brandy-fruit',
+        name: '과일 브랜디 스타일',
+        flavorTags: ['산뜻한 맛', '달콤한 맛'],
+        aroma: '사과, 배 등 신선한 과일 향이 살아있어요.',
+        taste: '가볍고 산뜻한 단맛이 특징이에요.',
+        note: '숙성 기간이 비교적 짧아 원재료의 과일향이 잘 남아있어요.',
+      },
+    ],
+    drinkingMethods: [
+      {
+        id: 'brandy-neat',
+        term: '니트 (Neat)',
+        termExplanation: '얼음이나 다른 재료 없이 술만 마시는 방법이에요.',
+        glass: '스니프터 글라스 (볼이 둥근 잔)',
+        useIce: false,
+        steps: [
+          '브랜디를 20~30ml 따르고',
+          '잔을 손으로 감싸 살짝 데워가며 향을 먼저 즐기고',
+          '아주 조금씩 머금어 향과 맛을 함께 느껴보세요',
+        ],
+        note: '도수가 높은 편이라 소량으로 천천히 즐기는 걸 추천해요.',
+      },
+      {
+        id: 'brandy-rocks',
+        term: '온더록스 (On the Rocks)',
+        termExplanation: '얼음을 넣어 차갑고 가볍게 마시는 방법이에요.',
+        glass: '락 글라스',
+        useIce: true,
+        steps: ['잔에 얼음을 2개 정도 채우고', '브랜디를 30ml 따른 뒤', '천천히 돌려가며 즐겨보세요'],
+        note: '향이 니트보다는 차분하게 느껴져요.',
+      },
+      {
+        id: 'brandy-soda',
+        term: '브랜디 소다 (믹서 조합)',
+        termExplanation: '탄산수를 섞어 가볍게 즐기는 방법이에요.',
+        glass: '하이볼 글라스',
+        useIce: true,
+        steps: [
+          '얼음을 채운 잔에 브랜디 30ml를 따르고',
+          '차가운 탄산수를 100ml 정도 채워 가볍게 저어주세요',
+        ],
+        ratioIsExample: true,
+        note: '식전이나 가볍게 시작할 때 좋은 방법이에요.',
+      },
+    ],
+  },
+  {
+    id: 'rum',
+    name: '럼',
+    englishName: 'Rum',
+    shortIntro: '사탕수수나 당밀을 발효·증류한 술로, 달콤한 향이 특징이에요.',
+    aromaSummary: '카라멜, 바닐라, 열대 과일을 닮은 향이 나요.',
+    tasteSummary: '다크 럼은 묵직하고 달콤하며, 화이트 럼은 가볍고 산뜻해요.',
+    characteristicNote:
+      '럼은 색이 진할수록 오래 숙성돼 묵직해지고, 색이 맑을수록 가볍고 산뜻한 편이에요. 같은 럼이라도 색만 봐도 대략적인 스타일을 짐작할 수 있어요.',
+    variants: [
+      {
+        id: 'rum-dark',
+        name: '다크 럼',
+        flavorTags: ['묵직한 맛', '달콤한 맛'],
+        aroma: '카라멜과 말린 과일 향이 진해요.',
+        taste: '묵직하고 달콤한 여운이 길게 남아요.',
+        note: '오크통에서 오래 숙성해 색과 향이 진해진 스타일이에요.',
+      },
+      {
+        id: 'rum-white',
+        name: '화이트 럼',
+        flavorTags: ['산뜻한 맛'],
+        aroma: '가볍고 깨끗한 단맛의 향이 나요.',
+        taste: '산뜻하고 목넘김이 부드러워요.',
+        note: '숙성을 짧게 하거나 숯 등으로 걸러내 색이 맑아요.',
+      },
+    ],
+    drinkingMethods: [
+      {
+        id: 'rum-neat',
+        term: '니트 (Neat)',
+        termExplanation: '아무것도 섞지 않고 그대로 마시는 방법이에요.',
+        glass: '튤립형 글라스',
+        useIce: false,
+        steps: ['다크 럼을 30ml 따르고', '향을 먼저 맡은 뒤', '조금씩 머금어 단맛과 향을 느껴보세요'],
+        note: '숙성이 오래된 다크 럼일수록 니트로 즐기기 좋아요.',
+      },
+      {
+        id: 'rum-rocks',
+        term: '온더록스 (On the Rocks)',
+        termExplanation: '얼음을 넣어 차갑게 마시는 방법이에요.',
+        glass: '락 글라스',
+        useIce: true,
+        steps: ['얼음을 채운 잔에 럼을 30ml 따르고', '잠깐 기다렸다가 마셔보세요'],
+      },
+      {
+        id: 'rum-mojito',
+        term: '모히토 스타일 (믹서 조합)',
+        termExplanation: '라임과 탄산수를 더해 가볍고 상쾌하게 즐기는 방법이에요.',
+        glass: '하이볼 글라스',
+        useIce: true,
+        steps: [
+          '잔에 라임 반 개를 짜 넣고',
+          '설탕(또는 시럽) 1티스푼과 화이트 럼 30ml를 넣은 뒤',
+          '잘게 부순 얼음과 탄산수를 채워 가볍게 저어주세요',
+        ],
+        ratioIsExample: true,
+        note: '재료 비율은 예시이며, 단맛과 탄산의 정도는 취향대로 조절하면 돼요.',
+      },
+      {
+        id: 'rum-cola',
+        term: '콜라 하이볼 (믹서 조합)',
+        termExplanation: '콜라를 섞어 부담 없이 즐기는 방법이에요.',
+        glass: '하이볼 글라스',
+        useIce: true,
+        steps: ['얼음을 채운 잔에 다크 럼 30ml를 따르고', '콜라를 채워 가볍게 저어주세요'],
+        ratioIsExample: true,
+      },
+    ],
+  },
+  {
+    id: 'gin',
+    name: '진',
+    englishName: 'Gin',
+    shortIntro: '주니퍼베리(노간주나무 열매)로 향을 낸 증류주예요. 상큼한 허브·과일 향이 특징이에요.',
+    aromaSummary: '주니퍼베리 특유의 상큼한 향에 허브·시트러스 향이 더해져요.',
+    tasteSummary: '전체적으로 산뜻하고 청량한 편이지만, 스타일에 따라 단맛이 강한 것도 있어요.',
+    characteristicNote:
+      '진은 향을 내는 재료(보태니컬)가 스타일마다 달라서 브랜드별로 향의 결이 꽤 다르게 느껴져요. 하나가 별로였다고 진 전체를 판단하기보다는 다른 스타일도 시도해보는 걸 추천해요.',
+    variants: [
+      {
+        id: 'gin-london-dry',
+        name: '런던드라이 스타일',
+        flavorTags: ['산뜻한 맛'],
+        aroma: '주니퍼베리와 시트러스 향이 또렷해요.',
+        taste: '드라이하고 산뜻해서 청량감이 강해요.',
+        note: '가장 널리 알려진 클래식한 진 스타일이에요.',
+      },
+      {
+        id: 'gin-flavored',
+        name: '플레이버드 스타일',
+        flavorTags: ['달콤한 맛'],
+        aroma: '과일이나 꽃 향이 더해져 화사해요.',
+        taste: '단맛과 향이 도드라져 진이 낯선 분도 편하게 마실 수 있어요.',
+        note: '오이, 자몽, 장미 등 다양한 부재료를 더한 스타일이 많아요.',
+      },
+    ],
+    drinkingMethods: [
+      {
+        id: 'gin-tonic',
+        term: '진토닉 (믹서 조합)',
+        termExplanation: '토닉워터를 섞어 상쾌하게 즐기는, 진의 가장 대표적인 방법이에요.',
+        glass: '하이볼 글라스',
+        useIce: true,
+        steps: [
+          '잔에 얼음을 채우고',
+          '진 30ml를 따른 뒤',
+          '토닉워터를 90ml 정도 채우고 라임 한 조각을 곁들여보세요',
+        ],
+        ratioIsExample: true,
+        note: '토닉워터 양이나 라임 대신 오이·로즈메리 등을 곁들여도 좋아요.',
+      },
+      {
+        id: 'gin-rocks',
+        term: '온더록스 (On the Rocks)',
+        termExplanation: '얼음만 넣어 향을 온전히 느끼는 방법이에요.',
+        glass: '락 글라스',
+        useIce: true,
+        steps: ['잔에 얼음을 채우고', '진을 30ml 따른 뒤 향을 맡으며 천천히 즐겨보세요'],
+      },
+      {
+        id: 'gin-neat',
+        term: '니트 (Neat)',
+        termExplanation: '아무것도 섞지 않고 마시는 방법이에요.',
+        glass: '작은 튤립형 글라스',
+        useIce: false,
+        steps: ['진을 15~20ml 정도 소량만 따르고', '향을 먼저 충분히 맡은 뒤 조금씩 맛보세요'],
+        note: '도수와 향이 강하게 느껴질 수 있어 소량으로만 시도해보길 추천해요.',
+      },
+    ],
+  },
+  {
+    id: 'vodka',
+    name: '보드카',
+    englishName: 'Vodka',
+    shortIntro:
+      '곡물이나 감자를 증류해 최대한 순수하게 정제한 술로, 향과 맛이 깨끗한 편이에요.',
+    aromaSummary: '향이 거의 없거나 아주 은은한 곡물 향만 남아요.',
+    tasteSummary: '무색무취에 가까운 산뜻한 맛이 기본이고, 플레이버드 스타일은 단맛이 더해져요.',
+    characteristicNote:
+      '보드카는 "향이 없는 술"로 알려져 있지만, 만드는 재료와 증류 방식에 따라 미묘한 질감 차이가 있어요. 다른 재료와 잘 어우러지는 성격이라 믹서 조합으로도 자주 쓰여요.',
+    variants: [
+      {
+        id: 'vodka-classic',
+        name: '클래식 스타일',
+        flavorTags: ['산뜻한 맛'],
+        aroma: '거의 향이 느껴지지 않을 정도로 깨끗해요.',
+        taste: '깔끔하고 중립적인 맛이라 다른 재료의 맛을 그대로 살려줘요.',
+        note: '차갑게 즐길수록 목넘김이 부드러워요.',
+      },
+      {
+        id: 'vodka-flavored',
+        name: '플레이버드 스타일',
+        flavorTags: ['달콤한 맛'],
+        aroma: '과일이나 허브 향이 은은하게 더해져 있어요.',
+        taste: '단맛이 살짝 느껴져 편하게 마시기 좋아요.',
+        note: '베리류, 시트러스 등 다양한 향을 더한 스타일이 있어요.',
+      },
+    ],
+    drinkingMethods: [
+      {
+        id: 'vodka-neat',
+        term: '니트 (차갑게)',
+        termExplanation: '냉동실에 미리 넣어 차갑게 만든 뒤 그대로 마시는 방법이에요.',
+        glass: '작은 샷 글라스',
+        useIce: false,
+        steps: ['보드카를 미리 냉동실에 30분 이상 넣어두고', '차가워진 상태로 20~30ml씩 소량 즐겨보세요'],
+        note: '차가울수록 알코올 특유의 자극이 덜 느껴져요.',
+      },
+      {
+        id: 'vodka-rocks',
+        term: '온더록스 (On the Rocks)',
+        termExplanation: '얼음을 넣어 마시는 방법이에요.',
+        glass: '락 글라스',
+        useIce: true,
+        steps: ['잔에 얼음을 채우고', '보드카를 30ml 따른 뒤 가볍게 즐겨보세요'],
+      },
+      {
+        id: 'vodka-moscow-mule',
+        term: '모스코 뮬 (믹서 조합)',
+        termExplanation: '진저비어와 라임을 더해 청량하게 즐기는 방법이에요.',
+        glass: '하이볼 글라스 (또는 금속 머그)',
+        useIce: true,
+        steps: [
+          '잔에 얼음을 채우고',
+          '보드카 30ml와 라임즙 15ml를 넣은 뒤',
+          '진저비어를 채워 가볍게 저어주세요',
+        ],
+        ratioIsExample: true,
+        note: '진저비어의 양은 매운맛 정도에 따라 조절해보세요.',
+      },
+    ],
+  },
+];
+
+export function getSpiritCategory(id: string) {
+  return spiritCategories.find((c) => c.id === id);
+}
