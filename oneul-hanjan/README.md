@@ -16,8 +16,26 @@
 
 ## 실행 방법
 
+### GitHub Codespaces로 실행 (추천)
+
+1. GitHub에서 이 저장소(`claude/quirky-fermi-fki0wj` 브랜치) 페이지의 **Code → Codespaces →
+   Create codespace on claude/quirky-fermi-fki0wj** 클릭
+2. Codespace가 열리면 (devcontainer가 자동으로 Node.js를 설치하고 `oneul-hanjan`에 `npm install`까지
+   끝내둡니다) 터미널에서:
+   ```bash
+   cd oneul-hanjan
+   npm run dev
+   ```
+3. "포트 5173로 포워딩됨" 알림이 뜨면 그 링크를 눌러 브라우저에서 확인
+4. 데스크톱 VS Code에서 이어서 작업하고 싶다면: 우측 상단 `...` 메뉴 또는 `Codespaces: Open in VS
+   Code Desktop` 명령으로 로컬 VS Code(Remote - Codespaces 확장 필요)에 연결하면 됩니다. 코드는
+   클라우드에서 실행되고, 편집·터미널·포트 포워딩은 그대로 데스크톱 화면에서 쓸 수 있어요.
+
+### 로컬 컴퓨터에서 실행
+
 ```bash
-cd oneul-hanjan
+git clone -b claude/quirky-fermi-fki0wj https://github.com/MidirK/AI-.git
+cd AI-/oneul-hanjan
 npm install
 npm run dev       # http://localhost:5173 에서 확인
 ```
